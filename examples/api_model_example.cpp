@@ -30,6 +30,45 @@ int main() {
     }
     */
 
+    // Example with Anthropic Claude (uncomment and set your API key to test)
+    /*
+    const char* claude_api_key = std::getenv("CLAUDE_API_KEY");
+    if (claude_api_key) {
+        std::cout << "Testing Anthropic Claude Model:\n";
+        auto claude_model = std::make_shared<ClaudeModel>(String(claude_api_key), "claude-3-haiku-20240307");
+        claude_model->set_temperature(0.7);
+        claude_model->set_max_tokens(500);
+        claude_model->set_anthropic_version("2023-06-01");
+
+        String prompt = "What is the capital of France?";
+        String response = claude_model->generate(prompt);
+
+        std::cout << "Prompt: " << prompt << std::endl;
+        std::cout << "Response: " << response << std::endl << std::endl;
+    } else {
+        std::cout << "CLAUDE_API_KEY environment variable not set. Skipping Claude test.\n\n";
+    }
+    */
+
+    // Example with Google AI (uncomment and set your API key to test)
+    /*
+    const char* google_api_key = std::getenv("GOOGLE_API_KEY");
+    if (google_api_key) {
+        std::cout << "Testing Google AI Model:\n";
+        auto google_model = std::make_shared<GoogleModel>(String(google_api_key), "gemini-pro");
+        google_model->set_temperature(0.7);
+        google_model->set_max_tokens(500);
+
+        String prompt = "What is the capital of France?";
+        String response = google_model->generate(prompt);
+
+        std::cout << "Prompt: " << prompt << std::endl;
+        std::cout << "Response: " << response << std::endl << std::endl;
+    } else {
+        std::cout << "GOOGLE_API_KEY environment variable not set. Skipping Google AI test.\n\n";
+    }
+    */
+
     // Example with Qwen (千问) (uncomment and set your API key to test)
     /*
     const char* qwen_api_key = std::getenv("QWEN_API_KEY");

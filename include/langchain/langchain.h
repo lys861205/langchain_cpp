@@ -12,5 +12,7 @@
 #include "vectorstores.h"
 #include "models.h"
 #include "memory.h"
+#include "data_connectors.h"
+#include "advanced_retrievers.h"
 
 #endif // LANGCHAIN_H
