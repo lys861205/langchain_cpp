@@ -28,19 +28,12 @@ std::vector<Document> AdvancedRetriever::search(const String& query, int k,
 std::vector<std::pair<Document, double>> AdvancedRetriever::search_with_scores(const String& query, int k,
                                                                               const std::map<String, String>& filters,
                                                                               double threshold) {
-    // Get all documents from vector store
-    // Note: In a real implementation, we would have a method to get all documents
-    // For now, we'll assume the vector store has a get_all_documents method
-    std::vector<Document> all_documents;
-
-    // If vector_store_ is an InMemoryVectorStore, we could cast it and get documents directly
-    // For now, we'll create a simple approach
+    // Retrieve documents from vector store using similarity search
+    // We retrieve more documents than needed to account for filtering
+    auto all_documents = vector_store_->similarity_search(query, k * 10);
 
     // Calculate similarity scores for all documents
     std::vector<std::pair<Document, double>> similarities;
-
-    // In a real implementation, we would retrieve documents from the vector store
-    // For now, we'll assume we have access to the documents
 
     // Filter documents based on metadata
     auto filtered_documents = filter_documents(all_documents, filters);

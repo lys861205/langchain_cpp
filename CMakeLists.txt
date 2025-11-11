@@ -413,6 +413,18 @@ if(REDIS_AVAILABLE)
     target_link_libraries(final_demo ${HIREDIS_LIBRARY})
 endif()
 
+# Add search_with_scores test
+add_executable(search_with_scores_test examples/search_with_scores_test.cpp)
+target_link_libraries(search_with_scores_test langchain_cpp ${SQLITE3_LIBRARIES})
+if(BRPC_AVAILABLE)
+    target_link_libraries(search_with_scores_test ${BRPC_LIBRARY})
+else()
+    target_link_libraries(search_with_scores_test ${CURL_LIBRARIES})
+endif()
+if(REDIS_AVAILABLE)
+    target_link_libraries(search_with_scores_test ${HIREDIS_LIBRARY})
+endif()
+
 # Add Redis memory example
 if(REDIS_AVAILABLE)
     add_executable(redis_memory_example examples/redis_memory_example.cpp)
